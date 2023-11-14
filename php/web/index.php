@@ -10,6 +10,7 @@ $pathname = parse_url($url, PHP_URL_PATH);
 $query = parse_url($url, PHP_URL_QUERY);
 
 if (str_starts_with($pathname, $prefix)) {
+    echo $verifyHost . $pathname . '?' . $query;
     $pathname = '/verify/' .substr($pathname, strlen($prefix));
     $data = $pathname . '#?' . $query;
 
@@ -19,6 +20,8 @@ if (str_starts_with($pathname, $prefix)) {
         $signing_key
     ));
 
+    $signature = str_replace('+', '-', $signature);
+
     $verifyUrl = $verifyHost . $pathname . '?'. $query . '&s=' . $signature;
-    echo '<a target="_blank" href="' . $verifyUrl .'">' . $verifyUrl . '</a>';
+    echo '<div><a target="_blank" href="' . $verifyUrl .'">' . $verifyUrl . '</a></div>';
 }
