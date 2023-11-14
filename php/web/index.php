@@ -10,7 +10,9 @@ $pathname = parse_url($url, PHP_URL_PATH);
 $query = parse_url($url, PHP_URL_QUERY);
 
 if (str_starts_with($pathname, $prefix)) {
-    echo $verifyHost . $pathname . '?' . $query;
+    $generateUrl = $verifyHost . $pathname . '?' . $query;
+    echo '<div><a target="_blank" href="' . $generateUrl .'">' . $generateUrl . '</a></div>';
+
     $pathname = '/verify/' .substr($pathname, strlen($prefix));
     $data = $pathname . '#?' . $query;
 
