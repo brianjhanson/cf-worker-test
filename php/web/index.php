@@ -102,7 +102,7 @@ if ($_POST) {
 
                     <div>
                         <label for="path">Path</label>
-                        <input type="path" name="path" value="<?php echo $path; ?>" />
+                        <input type="text" name="path" value="<?php echo $path; ?>" />
                     </div>
                     <div>
                         <label for="width">Width</label>
