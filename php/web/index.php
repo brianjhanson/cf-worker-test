@@ -19,7 +19,8 @@ if (str_starts_with($pathname, $prefix)) {
     $signature = base64_encode(hash_hmac(
         'sha256',
         $data,
-        $signing_key
+        $signing_key,
+        true
     ));
 
     $signature = str_replace('+', '-', $signature);
