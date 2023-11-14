@@ -1,15 +1,8 @@
 <?php
 
-$host = 'http://127.0.0.1:8787';
+$verifyHost = 'http://127.0.0.1:8787';
 
-$result = '';
-$signature = '';
-$data = '';
 $signing_key = 'my secret symmetric key';
-
-$path = $_POST['path'] ?? '/relieved-raven-af417dbb-local/ap-ds-01.png';
-$width = $_POST['width'] ?? '300';
-$height = $_POST['height'] ?? '200';
 
 $prefix = '/generate/';
 $url = $_SERVER['REQUEST_URI'];
@@ -26,6 +19,6 @@ if (str_starts_with($pathname, $prefix)) {
         $signing_key
     ));
 
-    $verifyUrl = $host . $pathname . '?'. $query . '&s=' . $signature;
+    $verifyUrl = $verifyHost . $pathname . '?'. $query . '&s=' . $signature;
     echo '<a target="_blank" href="' . $verifyUrl .'">' . $verifyUrl . '</a>';
 }
