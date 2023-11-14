@@ -1,15 +1,15 @@
 <?php
 
-$host = 'http://127.0.0.1:8787';
+$host = 'http://127.0.0.1:8787/verify';
 
 $result = '';
 $signature = '';
 $data = '';
-$signing_key = 'some-secret-key';
+$signing_key = 'my secret symmetric key';
 
-$path = $_POST['path'] ?? '';
-$width = $_POST['width'] ?? '';
-$height = $_POST['height'] ?? '';
+$path = $_POST['path'] ?? '/relieved-raven-af417dbb-local/ap-ds-01.png';
+$width = $_POST['width'] ?? '300';
+$height = $_POST['height'] ?? '200';
 
 if ($_POST) {
     $path = parse_url($path, PHP_URL_PATH);
@@ -121,6 +121,8 @@ if ($_POST) {
                     </div>
                     <pre><?php echo $data; ?></pre>
                     <pre><?php echo $signature; ?></pre>
+                    <pre><?php echo base64_decode($signature); ?></pre>
+                    <input type="text">
                 </div>
 
                 <button type="submit">Submit</button>
